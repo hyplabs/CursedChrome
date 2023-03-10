@@ -138,7 +138,7 @@ const websocket_check_interval = setInterval(() => {
 
     // Send PING message down websocket, this will be
     // replied to with a PONG message form the server
-    // which will trigger a function to update the 
+    // which will trigger a function to update the
     // last_live_connection_timestamp variable.
 
     // If this timestamp gets too old, the WebSocket
@@ -292,10 +292,10 @@ function initialize() {
     // the host details you're using are.
     // ** Ideal setup is the following **
     // Have Nginx doing a reverse-proxy (proxy_pass) to
-    // the CursedChrome server with a HTTPS cert setup. 
+    // the CursedChrome server with a HTTPS cert setup.
     // For SSL/TLS WebSockets, instead of https:// you need
     // to use wss:// as the protocol. For maximum stealth,
-    // setting the WebSocket port to be the standard 
+    // setting the WebSocket port to be the standard
     // TLS/SSL port (this will make sure tools like little
     // snitch don't alert on a new port connection from Chrome).
     websocket = new WebSocket("ws://127.0.0.1:4343");

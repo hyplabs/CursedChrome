@@ -450,12 +450,12 @@ async function initialize() {
 
     // Called when a new redis subscription is added
     subscriber.on("subscribe", function(channel, count) {
-        //logit(`New subscription created for channel ${channel}, bring total to ${count}.`);
+        logit(`New subscription created for channel ${channel}, bring total to ${count}.`);
     });
 
     // Called when a new message is written to a channel
     subscriber.on("message", function(channel, message) {
-        //logit(`Received a new message at channel '${channel}', message is '${message}'`);
+        logit(`Received a new message at channel '${channel}', message is '${message}'`);
 
         // For messages being sent to the browser from the proxy
         if (channel.startsWith('TOBROWSER_')) {
@@ -487,7 +487,7 @@ async function initialize() {
 
             // Check if we're tracking this response
             if (REQUEST_TABLE.has(inbound_message.id)) {
-                //logit(`Resolving function for message ID ${inbound_message.id}...`);
+                logit(`Resolving function for message ID ${inbound_message.id}...`);
                 const resolve = REQUEST_TABLE.take(inbound_message.id);
                 resolve(inbound_message.result);
             }
@@ -545,7 +545,7 @@ async function initialize() {
             if (inbound_message.origin_action === 'AUTH') {
                 // Check if we're tracking this response
                 if (REQUEST_TABLE.has(inbound_message.id)) {
-                    //logit(`Resolving function for message ID ${inbound_message.id}...`)
+                    logit(`Resolving function for message ID ${inbound_message.id}...`)
                     const resolve = REQUEST_TABLE.take(inbound_message.id);
                     resolve(inbound_message.result);
                 }
@@ -622,4 +622,3 @@ async function initialize() {
         logit(`Worker ${process.pid} started`);
     }
 })();
-
